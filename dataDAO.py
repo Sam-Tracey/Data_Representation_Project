@@ -6,7 +6,7 @@ import json
 
 
 class DataDAO:
-    
+    # Setting up the connection to the database
     db=""
     def initConnect(self):
         db = mysql.connector.connect(
@@ -26,7 +26,7 @@ class DataDAO:
         )
         return db
 
-
+    # Initialise the Fred API connection
     def __init__(self):
         self.url = cfg.fred['url']
         self.url_end = cfg.fred['url_end']
@@ -51,7 +51,7 @@ class DataDAO:
         db.close()
         cursor.close()
         return
-
+    # Due to page latency issues in pythonanywhere I've not included a page for this data.
     def loadMFGEMP(self, table = cfg.fred['MFGEMP']):
         db = self.getConnection()
         self.table = table
@@ -287,8 +287,6 @@ class DataDAO:
         db.close()
         cursor.close()
         return result
-    
-    
     
     
     def getAllUsers(self):
