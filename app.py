@@ -47,6 +47,7 @@ def login():
             error = 'Invalid Credentials. Please try again.'
     return render_template('login.html', error=error)
 
+# Route for signing up a new user
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -59,6 +60,7 @@ def signup():
         return redirect(url_for('index'))
     return render_template('signup.html')
 
+# I've included this route for the "forgotten password" feature but not using it in the app.
 @app.route('/forgotpass', methods=['GET', 'POST'])
 def forgotpass():
     if request.method == 'POST':
@@ -81,26 +83,28 @@ def forgotpass():
     return render_template('forgotpass.html')
 
     
-
+# Home page route
 @app.route('/home')
 def home():
     if not 'username' in session:
         return redirect(url_for('login'))
     return render_template('home.html')
 
+# About Page route.
 @app.route('/about')
 def about():
     if not 'username' in session:
         return redirect(url_for('login'))
     return render_template('about.html')
 
+# Employee page route
 @app.route('/employee')
 def employee():
     if not 'username' in session:
         return redirect(url_for('login'))
     return render_template('employee.html')
     
-
+# Route for reading the data from the local attrition rate data from database
 @app.route('/get_data')
 def employee_api():
     if not 'username' in session:
@@ -108,6 +112,7 @@ def employee_api():
     results = dataDAO.readQuits()
     return jsonify(results)
 
+# Reading all data to MySQL on successful login
 @app.route('/load_data', methods=['GET'])
 def load_local_data():
     if not 'username' in session:
@@ -120,7 +125,7 @@ def load_local_data():
 
     return jsonify({'message': 'Data loaded from local file'})
     
-
+# Find local quit data by ID
 @app.route('/employee/<int:id>')
 def findById(id):
     if not 'username' in session:
@@ -128,6 +133,7 @@ def findById(id):
     results = dataDAO.findQuitsByID(id)
     return jsonify(results)
 
+# Route for creating new emplyee quit entry from form
 @app.route('/employee', methods=['POST'])
 def create():
     if not 'username' in session:
@@ -143,6 +149,7 @@ def create():
     employee['id'] = newId
     return jsonify(employee)
 
+# Route for updating employee quit data
 @app.route('/employee/<int:id>', methods=['PUT'])
 def update(id):
     if not 'username' in session:
@@ -164,6 +171,7 @@ def update(id):
     dataDAO.updateQuitsByID(values)
     return jsonify(foundEmployee)
 
+# Route for deleting employee quit data
 @app.route('/employee/<int:id>', methods=['DELETE'])
 def delete(id):
     if not 'username' in session:
@@ -172,8 +180,7 @@ def delete(id):
     return jsonify({"done": True})
 
 
-
-# routes for generating visualizations #
+# routes for generating visualizations
 
 @app.route('/dash1')
 def dash1():
