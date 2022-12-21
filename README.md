@@ -56,5 +56,21 @@ These data sets are extracted directly from the <a href="https://fred.stlouisfed
 * <code>requirements.txt</code> File containing the Python packages required to run the application.
 * <code>static</code> Folder containing the images used in the webpages (images folder) and css styles used for the webpages (styles folder).
 * <code>templates</code> Folder containing 10 .html pages used for the web application.
-* <code>images</code> Folder containing the images used in this Readme document.
- 
+* <code>images</code> Folder containing the images used in this Readme document.</p>
+
+### To Run the Application.
+
+<p> The Github Repositry for this project can be accessed at: <a href="https://github.com/Sam-Tracey/Data_Representation_Project">This Link</a> From here you can click on the green Code button and clone the repo to your local machine by following the instructions.
+
+MySQL is required for this application. You can download MySQL Work bench here: https://dev.mysql.com/downloads/workbench/
+    
+Once downloaded you will need to initialize the datarepresentation schema.This can be done by copying the contents of the <code>init_db.sql</code> file that you have cloned from Github and pasting it into a New Query tab. Once pasted, click on the Execute Icon as shown below:
+<br>
+<br>
+![DB Init](images/db_init.png)
+<br>
+<br>
+Once executed you will see a new schema created containing 6 tables:<br>
+<br>
+![Schema](images/schema.png)
+    
