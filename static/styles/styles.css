@@ -1,0 +1,289 @@
+html{
+    height: 100%;
+}
+
+/* Body class used on all pages defining the background color, font characteristics, height and display settings. */
+body {
+    margin: 0;
+    background: rgb(255, 255, 255);
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    min-height: 100%;
+    /* Create a flexbox to improve alignmnet properties*/
+    display: flex;
+    /*Ensure the flex 'columns' behave like 'rows' i.e. stacked*/
+    flex-direction: column;
+}
+/* container class used in all pages.*/
+.container {
+    padding: 0 1em;
+    width: 100%;
+    /* define max width of sentences*/
+    max-width: 60rem;
+    /* Create margin between text and edge of page */
+    margin-left: 50px;
+}
+/* menu class used on all pages to define top menu bar properties */
+.menu {
+    width: 80%;
+    margin: 0 auto;
+}
+/* Define colour of header class on all pages */
+header {
+    background: white;
+}
+
+/* This clear fix stops our floated elements overflowing outside the container */
+/* ref: https://www.w3schools.com/howto/howto_css_clearfix.asp */
+header::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Logo class used on all pages used to Float logo to left hand side */
+.logo {
+    float: left;
+}
+
+/* nav class used on all pages to Float menu bar to right hand side*/
+nav {
+    float: right;
+}
+
+/* nav ul Settings for navigation bar on all pages*/
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* nav li List settings for navigation bar */
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 23px;
+    position: relative;
+}
+
+/* nav a Font settings for navigation bar */
+nav a {
+    color: rgb(15, 0, 82);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/* Change font colour on hover */
+nav a:hover {
+    color: rgb(145, 5, 5);
+}
+
+/* create a pseudo element to add bar above list item*/
+nav a::before {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 0%;
+    background-color: rgb(15, 0, 82);
+    /* Set position of marker bars relative to list item*/
+    position: absolute;
+    top: 0;
+    /*transition settings for hover bar */
+    transition: all ease-in-out 250ms;
+}
+/* nav a hover properties - this displays a line above the menu item when the mouse hovers over.*/
+nav a:hover::before {
+    width: 100%;
+}
+
+/* Scale logo to size */
+img {
+    width: 75px;
+    height: auto;
+  }
+
+/*Banner class used on all pages to size the linked image to fit the screen*/
+.banner {
+    /* Fallback colour of image fails to load for any reason*/
+    background-color: darkblue;
+    /*Disable image repeat*/
+    background-repeat: no-repeat;
+    /*Stretch background image to fit screen*/
+    background-size: cover;
+    /* font colour for topBox*/
+    color: white;
+    /* Specify image location */
+    background-image: url("../images/banner_long.jpg");
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Properties for the footer element used in all pages*/
+footer {
+    background: rgb(0, 0, 0);
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-top: auto;
+
+}
+
+/* Properties for the footer list (icons used) */
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+/* List settings for footer */
+footer ul li {
+    display: inline-block;
+    padding-top: 5px;
+    position: relative;
+    }
+
+/* Font settings for footer icons */
+footer ul li a {
+    text-decoration: none;   
+} 
+
+/*Class used on all pages to ensure correct spacing between footer icons */
+.social-items {
+    padding-right: 200px;
+    font-size: 50px;
+}
+
+/* fa-brands class specifies which colour to show icons on footer. Used in all pages */
+.fa-brands {
+    color: white;
+}
+
+/* fa-brands class setting the hover properties (change the icon colour slightly */
+.fa-brands:hover {
+    color:rgb(173, 173, 173);
+}
+
+/* .flex-container class used in DOM, D3_csv, observable and D3 pages.*/
+.flex-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+/* .main-content class used in DOM, D3_csv, observable and D3 pages.*/
+.main-content{
+    flex: 1;
+    padding: 0 1em;
+    max-width: 60rem;
+    margin: 0 auto;
+    
+}
+
+/* .sidebar class used in DOM, D3_csv, observable and D3 pages.*/
+.sidebar{
+    flex: 0 0 50%;
+    max-width: 40rem;
+    padding: 0 1em;
+    margin: 0 auto;
+    border-left: 1px dotted;
+    
+    
+}
+
+/* Style for aligning the create entry boxes in the Employee Data tab */
+.aligned-label {
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* add a tab worth of space */
+    padding-right: 20px; /* add a tab worth of space */
+  }
+
+
+/* .btn-group class used in DOM, D3-csv and D3 pages to align button group to centre of flex field*/
+.btn-group {
+    text-align: center;
+        
+}
+
+
+/* btn-group button class used in DOM, D3-csv and D3 pages to add space between buttons*/
+.btn-group button {
+    margin-right:40px;
+    margin-top: 60px;
+}
+
+/*d3-container class used class used in DOM, D3-csv and D3 pages centre d3 svg containers*/
+#d3-container {
+    text-align:center;
+}
+
+
+/* dark-mode class used in DOM page to toggle Dark mode settings*/
+.dark-mode {
+    background-color: black;
+    color: white;
+  }
+/* change-font class used in DOM page to toggle font type and size*/
+.change-font {
+    font-family: Impact, cursive, sans-serif;
+    font-size: x-large;
+
+}
+/* change-border class used in DOM page to add border*/
+.change-border {
+    background-color: lightblue;
+    border-style: dashed;
+    border-width: 3px;
+    box-shadow: 10px 20px 30px grey;
+    padding: 20px;
+
+}
+
+/* white-font class used in DOM page to toggle font colour only*/
+.white-font {
+    color: white;
+}
+
+/* h1 and h3 class on all pages to add shadow effect for H1 and H3 tags (banner only) */
+h1, h3 {
+    text-shadow: 2px 2px 4px #000000;
+  }
+
+/*rectangle class used in D3 and D3_csv pages to change opacity of chart rectangles on hover */ 
+.rectangle:hover {
+    opacity: 0.66;
+}
+
+/*Content class used in home page to centre icons on screen*/
+.content {
+    min-height: 25%;
+    width: 100%;
+    text-align: center;
+  }
+ 
+/* Defining properties for div elements in content class */
+.content > div {
+    display: inline-block;
+    padding: 3%;
+  }
+ 
+/* Defining properties for imgages in div element of content class */
+.content > div  img {
+    width: 75px;
+  }
+
+
+.table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid;
+  }

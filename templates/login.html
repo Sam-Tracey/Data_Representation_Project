@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login Form</title>
+      <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/login_styles.css') }}" >
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title">
+            Login Form
+         </div>
+         <form action="{{ url_for('login') }}" method="POST">
+            <div class="field">
+               <input type="text" name="username" required value="{{
+                request.form.username}}">
+               <label>Username</label>
+            </div>
+            <div class="field">
+               <input type="password" name="password" required value="{{
+                request.form.password}}">
+               <label>Password</label>
+            </div>
+            <div class="content">
+               <div class="checkbox">
+                  <input type="checkbox" id="remember-me">
+                  <label for="remember-me">Remember me</label>
+               </div>
+               <div class="pass-link">
+                  <a href="{{ url_for('forgotpass') }}">Forgot password?</a>
+               </div>
+            </div>
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+               Not a member? <a href="{{ url_for('signup') }}">Signup now</a>
+            </div>
+         </form>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+          <script>
+            function autoRefresh() {
+                window.location = window.location.href;
+            }
+            setInterval('autoRefresh()', 2000);
+        </script>
+        {% endif %}
+      </div>
+   </body>
+</html>
+

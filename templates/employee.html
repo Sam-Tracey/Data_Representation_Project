@@ -1,0 +1,314 @@
+<!DOCTYPE html lang="en">
+<head>
+<!--Font reference-->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300">
+<!--Style sheet link-->
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+<!--Social media icons link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+ integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+ crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employee Data</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Main Menu Section -->
+        <div class="menu">
+
+            <img src="/static/images\logo.png" alt="logo" class="logo">
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('employee') }}">Employee Data</a></li>
+                    <li><a href="{{ url_for('dash1') }}">Emp. Quits</a></li>
+                    <li><a href="{{ url_for('dash2') }}">S.C Quits</a></li>
+                    <li><a href="{{ url_for('dash3') }}">S.C Openings</a></li>
+                    <li><a href="{{ url_for('dash4') }}">S.C Unemp. Rate</a></li>
+                    
+
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!-- Upper Banner Section -->
+    <div class="banner">
+        <div class="container">
+            <h1>Employee Data</h1>
+            <p>Sam Tracey</p>
+            <p>G00398245</p>
+
+
+        </div>
+    </div>
+    <!--Flex container for content in left hand pane-->
+    <div class="flex-container">
+        <div class ="main-content">
+            <h2>Employee Data</h2>
+            <div> <button id="showCreateButton" onclick="showCreate()">Create</button></div>
+            <div>
+                <table class="table" id="empTable">
+                    <thead>
+                        
+                                <th>id</th>
+                                <th>Date</th>
+                                <th>Quits</th>
+                    </thead>   
+    
+                </table>
+            </div>
+        </div>
+
+
+        <!--Container for right hand pane-->
+        <div class="sidebar">
+            <div id='createUpdateForm' style="display: none">
+                <h2><span id="createLabel">Create</span> <span id="updateLabel">Update</span> Quit Data</h2>
+                <input type="hidden" name="id"/>
+                <label class="aligned-label">Date<input type="text" name="date" /></label><br/>
+                <label class="aligned-label">Quits<input type="text" name="num_quit"/></label><br/>
+                <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+                <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
+            </div> 
+         </div>
+ 
+ 
+    </div>
+    <!-- Foot section including social media buttons / links -->
+    <footer class="footer">
+        
+            
+        <ul>
+            <li class="social-items"><a href="https://github.com/Sam-Tracey" target="_blank"><i class="fa-brands fa-github"></i></i></a></li>
+            <li class="social-items"><a href="https://www.linkedin.com/in/sam-tracey-327044188/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li class="social-items"><a href="https://twitter.com/Sam_Tracey76" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+        </ul> 
+     
+ 
+ 
+    </footer>
+
+</body>
+<script>
+    function showCreate(){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('empTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+
+        document.getElementById('createLabel').style.display="inline"
+        document.getElementById('updateLabel').style.display="none"
+
+        document.getElementById('doCreateButton').style.display="block"
+        document.getElementById('doUpdateButton').style.display="none"
+    }
+
+    function showViewAll(){
+        document.getElementById('showCreateButton').style.display="block"
+        document.getElementById('empTable').style.display="block"
+        document.getElementById('createUpdateForm').style.display="none"
+    }
+
+    function showUpdate(buttonElement){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('empTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+
+        document.getElementById('createLabel').style.display="none"
+        document.getElementById('updateLabel').style.display="inline"
+
+        document.getElementById('doCreateButton').style.display="none"
+        document.getElementById('doUpdateButton').style.display="block"
+
+
+        var rowElement = buttonElement.parentNode.parentNode
+         
+        var quits = getQuitsFromRow(rowElement)
+        populateFormWithQuits(quits)
+    }
+
+    function doCreate(){
+        var form = document.getElementById('createUpdateForm')
+
+        var quits = {}
+       
+        quits.date = form.querySelector('input[name="date"]').value
+        quits.num_quit = form.querySelector('input[name="num_quit"]').value
+        console.log(JSON.stringify(quits))
+        createQuitsAjax(quits)
+        
+        
+    }
+
+    function doUpdate(){
+        var quits = getQuitsFromForm();
+        var rowElement = document.getElementById(quits.id);
+        updateQuitsAjax(quits);
+        setQuitsInRow(rowElement,quits);
+       
+        clearForm();
+        showViewAll();
+    }
+
+    function doDelete(r){
+        var tableElement = document.getElementById('empTable');
+        var rowElement = r.parentNode.parentNode;
+        var index = rowElement.rowIndex;
+        deleteQuitsAjax(rowElement.getAttribute("id"));
+        tableElement.deleteRow(index);
+    }
+
+    function addQuitsToTable(quits){
+        var tableElement = document.getElementById('empTable')
+        var rowElement = tableElement.insertRow(-1)
+        rowElement.setAttribute('id',quits.id)
+        var cell1 = rowElement.insertCell(0);
+        cell1.innerHTML = quits.id
+        var cell2 = rowElement.insertCell(1);
+        cell2.innerHTML = quits.date
+        var cell3 = rowElement.insertCell(2);
+        cell3.innerHTML = quits.num_quit
+        var cell4 = rowElement.insertCell(3);
+        cell4.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+        var cell5 = rowElement.insertCell(4);
+        cell5.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+
+    }
+
+    function clearForm(){
+        var form = document.getElementById('createUpdateForm')
+
+        form.querySelector('input[name="date"]').value=''
+        form.querySelector('input[name="num_quit"]').value=''
+
+    }
+
+    function getQuitsFromRow(rowElement){
+        var quits ={}
+        quits.id  = rowElement.getAttribute('id')
+        quits.date = rowElement.cells[1].firstChild.textContent
+        quits.num_quit = rowElement.cells[2].firstChild.textContent
+        return quits
+    }
+
+    function setQuitsInRow(rowElement, quits){
+        rowElement.cells[0].firstChild.textContent= quits.id  
+        rowElement.cells[1].firstChild.textContent= quits.date
+        rowElement.cells[2].firstChild.textContent= quits.num_quit
+
+    }
+
+    function populateFormWithQuits(quits){
+        var form = document.getElementById('createUpdateForm')
+        form.querySelector('input[name="id"]').disabled = true
+
+        form.querySelector('input[name="id"]').value  = quits.id
+        form.querySelector('input[name="date"]').value= quits.date
+        form.querySelector('input[name="num_quit"]').value= quits.num_quit
+
+        return quits
+    }
+
+    function getQuitsFromForm(){
+        var form = document.getElementById('createUpdateForm')
+        var quits = {}
+        quits.id = form.querySelector('input[name="id"]').value
+        quits.date = form.querySelector('input[name="date"]').value
+        quits.num_quit = form.querySelector('input[name="num_quit"]').value
+        console.log(JSON.stringify(quits))
+        return quits
+    }
+
+    function getAllAjax(){
+        $.ajax({
+            "url": "http://127.0.0.1:5000/get_data",
+            "method":"GET",
+            "data":"",
+            "dataType": "JSON",
+            "success":function(result){
+                console.log(result);
+                for (quits of result){
+                    addQuitsToTable(quits);
+                }
+                
+            },
+            "error":function(xhr,status,error){
+                console.log("crap: "+status+" msg:"+error);
+            }
+        });
+
+    }
+
+
+    function createQuitsAjax(quits, callback){
+        console.log(JSON.stringify(quits));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/employee",
+            "method":"POST",
+            "data":JSON.stringify(quits),
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+                //console.log(result);
+                quits.id = result.id
+                addQuitsToTable(quits)
+                location.reload()
+                //clearForm()
+                //showViewAll()
+            },
+            "error":function(xhr,status,error){
+                console.log("crap: "+status+" msg:"+error);
+            }
+        });
+        
+    }
+
+    function updateQuitsAjax(quits){
+        console.log(JSON.stringify(quits));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/employee/"+encodeURI(quits.id),
+            "method":"PUT",
+            "data":JSON.stringify(quits),
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+               // console.log(result);
+                  
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+
+    function deleteQuitsAjax(id){
+        
+        //console.log(JSON.stringify('deleting '+id));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/employee/"+encodeURI(id),
+            "method":"DELETE",
+            "data":"",
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+                //console.log(result);
+                  
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+
+    getAllAjax();
+  
+
+    
+    </script>
+</html>

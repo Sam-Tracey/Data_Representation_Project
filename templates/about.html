@@ -1,0 +1,101 @@
+<!DOCTYPE html lang="en">
+<head>
+<!--Font reference-->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300">
+<!--Style sheet link-->
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+<!--Social media icons link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+ integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+ crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About</title>
+
+</head>
+
+<body>
+    <header>
+        <!-- Main Menu Section -->
+        <div class="menu">
+
+            <img src="/static/images\logo.png" alt="logo" class="logo">
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('employee') }}">Employee Data</a></li>
+                    <li><a href="{{ url_for('dash1') }}">Emp. Quits</a></li>
+                    <li><a href="{{ url_for('dash2') }}">S.C Quits</a></li>
+                    <li><a href="{{ url_for('dash3') }}">S.C Openings</a></li>
+                    <li><a href="{{ url_for('dash4') }}">S.C Unemp. Rate</a></li>
+
+
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!-- Upper Banner Section -->
+    <div class="banner">
+        <div class="container">
+            <h1>Employee Retention - About</h1>
+            <p>Sam Tracey</p>
+            <p>G00398245</p>
+
+
+        </div>
+    </div>
+
+    <!-- Container for all text on this page -->
+    <div class="container">
+        <h2>Overview</h2>
+        <p>For this assignment, you must create a website that employs
+            the principles of HTML5, CSS and JavaScript which meets the requirements specified below.
+            The website content can be of your choosing (or it can be a personal site, meeting the requirements outlined below).
+            You should employ a common design theme/style and colour scheme throughout.</p>
+            <br>
+            <p>The Website should:</p>
+            <br>
+            <ol>
+                <li>Allow the customer to enter their login details and have login details validated (via a login screen);</li>
+                <li>Perform form validation through JavaScript or HTML to ensure that:</li>
+                <ul>
+                    <li>text fields are not empty;</li>
+                    <li>a valid email address is entered.</li>
+                </ul>
+                <li>Access and change HTML on the web page through the DOM;</li>
+                <li>Access and change styling through the DOM;</li>
+                <li>Demonstrate the use of events;</li>
+                <li>Contain two D3 data visualisations (e.g., Bar Chart) of your choosing</li>
+                <ul>
+                    <li>One from a CSV file</li>
+                    <li>One from an array</li>
+                </ul>
+                <li>Both visualisations should allow the user to specify display settings, including an option to changecolour, display size and animations.</li>
+                <li>Have a minimum of 3 linked pages;</li>
+            </ol>
+
+    </div>
+    <!-- Foot section including social media buttons / links -->
+    <footer class="footer">
+        
+            
+               <ul>
+                   <li class="social-items"><a href="https://github.com/Sam-Tracey" target="_blank"><i class="fa-brands fa-github"></i></i></a></li>
+                   <li class="social-items"><a href="https://www.linkedin.com/in/sam-tracey-327044188/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                   <li class="social-items"><a href="https://twitter.com/Sam_Tracey76" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+               </ul> 
+            
+        
+        
+    </footer>
+
+
+
+
+
+</body>
+</html>

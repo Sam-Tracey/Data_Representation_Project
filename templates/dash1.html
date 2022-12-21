@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+<!--Font reference-->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300">
+<!--Style sheet link-->
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+<!--Social media icons link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+ integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+ crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<title>Dashboard 1</title>
+
+</head>
+
+<body>
+    <header>
+        <!-- Main Menu Section -->
+        <div class="menu">
+
+            <img src="/static/images\logo.png" alt="logo" class="logo">
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('employee') }}">Employee Data</a></li>
+                    <li><a href="{{ url_for('dash1') }}">Emp. Quits</a></li>
+                    <li><a href="{{ url_for('dash2') }}">S.C Quits</a></li>
+                    <li><a href="{{ url_for('dash3') }}">S.C Openings</a></li>
+                    <li><a href="{{ url_for('dash4') }}">S.C Unemp. Rate</a></li>
+                    
+
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!-- Upper Banner Section -->
+    <div class="banner">
+        <div class="container">
+            <h1>Employee Quit Dashboard</h1>
+            <p>Sam Tracey</p>
+            <p>G00398245</p>
+
+
+        </div>
+    </div>
+    <!--Flex container for content in left hand pane-->
+    <div class="flex-container">
+        <div class ="main-content">
+            <h2>{{header}}</h2>
+            <div id="chart" class="chart"></div>
+        </div>
+
+
+        <!--Container for right hand pane-->
+        <div class="sidebar">
+            <h2>Data Table (Scrollable)</h2>
+            <div id="table" class="table"></div>
+         </div>
+ 
+ 
+    </div>
+    <!-- Foot section including social media buttons / links -->
+    <footer class="footer">
+        
+            
+        <ul>
+            <li class="social-items"><a href="https://github.com/Sam-Tracey" target="_blank"><i class="fa-brands fa-github"></i></i></a></li>
+            <li class="social-items"><a href="https://www.linkedin.com/in/sam-tracey-327044188/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li class="social-items"><a href="https://twitter.com/Sam_Tracey76" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+        </ul> 
+     
+ 
+ 
+    </footer>
+
+</body>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+    var graphs = {{ graphJSON|safe }};
+    Plotly.plot('chart',graphs,{});        
+</script>
+
+<script type="text/javascript">
+    var table = {{ graphJSON1|safe }};
+    Plotly.plot('table',table,{});
+</script>
+
+
+</html>

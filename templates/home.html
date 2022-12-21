@@ -1,0 +1,136 @@
+<!DOCTYPE html lang="en">
+<head>
+<!--Font reference-->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300">
+<!--Style sheet link-->
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+<!--Social media icons link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+ integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+ crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<title>Home</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+
+            <img src="/static/images\logo.png" alt="logo" class="logo">
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('employee') }}">Employee Data</a></li>
+                    <li><a href="{{ url_for('dash1') }}">Emp. Quits</a></li>
+                    <li><a href="{{ url_for('dash2') }}">S.C Quits</a></li>
+                    <li><a href="{{ url_for('dash3') }}">S.C Openings</a></li>
+                    <li><a href="{{ url_for('dash4') }}">S.C Unemp. Rate</a></li>
+
+
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="container">
+            <h1>Employee Retention - Home</h1>
+            <h3>Sam Tracey</h3>
+            <h3>G00398245</h3>
+
+
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Links to Pages</h1>
+        <div>
+            <figure>
+                <a href="{{ url_for('about') }}"><img src="/static/images\about.jpg" alt="About" title="Click to visit About Page"></a>
+                <figcaption>About</figcaption>
+            </figure>
+        </div>
+        <div>
+            <figure>
+                <a href="{{ url_for('employee') }}"><img src="/static/images\retention.jpg" alt="Employee Retention Data" title="Click to visit Employee Retention Page"></a>
+                <figcaption>Retention Data</figcaption>
+            </figure>
+        </div>
+        <div>
+            <figure>
+                <a href="{{ url_for('dash1') }}"><img src="/static/images\chart1.jpg" alt="Dashboard 1" title="Click to visit Dashboard 1"></a>
+                <figcaption>Employee Quits</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="content">
+        <div>
+            <figure>
+                <a href="{{ url_for('dash2') }}"><img src="/static/images\chart2.jpg" alt="Dashboard 2" title="Click to visit Dashboard 2"></a>
+                <figcaption>S.C Quits</figcaption>
+            </figure>
+        </div>
+        <div>
+            <figure>
+                <a href="{{ url_for('dash3') }}"><img src="/static/images\chart3.jpg" alt="Dashboard 3" title="Click to visit Dashboard 3"></a>
+                <figcaption>S.C Job Openings</figcaption>
+            </figure>
+        </div>
+        <div>
+            <figure>
+                <a href="{{ url_for('dash4') }}"><img src="/static/images\chart4.jpg" alt="Dashboard 4" title="Click to visit Dashboard 4"></a>
+                <figcaption>S.C Unemployment</figcaption>
+            </figure>   
+    </div>
+    
+
+    <footer class="footer">
+        
+            
+               <ul>
+                   <li class="social-items"><a href="https://github.com/Sam-Tracey" target="_blank"><i class="fa-brands fa-github"></i></i></a></li>
+                   <li class="social-items"><a href="https://www.linkedin.com/in/sam-tracey-327044188/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                   <li class="social-items"><a href="https://twitter.com/Sam_Tracey76" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+               </ul> 
+            
+        
+        
+    </footer>
+
+    <script>
+        function loadAllAjax(){
+            $.ajax({
+
+                "url": "http://127.0.0.1:5000/load_data",
+                "method": "GET",
+                "data":"",
+                "dataType": "json",
+                "success": function(result){
+                    console.log("loading data")
+                    console.log(result)
+                },
+                "error": function(xhr, status, error){
+                    console.log("error: "+status+" msg:"+error);
+
+                }
+            })
+
+        }
+
+
+        
+        loadAllAjax();
+        
+
+    </script>
+
+
+
+</body>
+
+</html>
