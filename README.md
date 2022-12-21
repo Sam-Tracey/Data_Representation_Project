@@ -8,8 +8,9 @@
 #### Topic: Big Project
 
 ***
+<br>
 
-### Introduction
+### Introduction<br><br>
 
 <p> The purpose of this project is to demonstrate an understanding of the creation and consumption of RESTful APIs.
     
@@ -18,7 +19,7 @@ This project uses Flask in conjunction with a MySQL database to create a web app
 <p>This project is centered around the provision of an Analytics web application which can be used by my current employer.
 </p>
 
-### Overview of Zeus Industrial Products
+### Overview of Zeus Industrial Products<br><br>
 
 <p> <a href="https://www.zeusinc.com/company/">Zeus Industrial Products</a> is a global leader in advanced polymer solutions, helping customers overcome complex design and engineering challenges for over 50 years. With manufacturing and sales facilities across three continents and a presence in 180 countries worldwide, Zeus develops and delivers customized polymer solutions for companies in the medical, automotive, aerospace, fiber optics, energy, and fluid management markets.
     
@@ -26,13 +27,14 @@ Headquartered in Orangeburg, SC, USA, Zeus employs over 1,800 people worldwide a
     
 Like many large corporations primarily based in the USA, employee attrition has become of greater concern in the past number of years.</p>
 
-### Purpose of This Project
+### Purpose of This Project<br><br>
 
 <p>The primary purpose of this project is to provide our leadership team with insights into the employee attrition rate at the company as well as trends in macro economic data that could be correlated.
     
 **Please note: Since the employee attrition rate is confidential information we will be using synthetic data for the purpose of this project**</p>
 
-### Data Sources
+***
+### Data Sources<br><br>
 
 <p> Our synthetic employee attrition data is initially stored in a .csv file before being read into our MySQL database. We also extract the following macro economic data:
 
@@ -41,8 +43,10 @@ Like many large corporations primarily based in the USA, employee attrition has 
 * <a href="https://fred.stlouisfed.org/series/JTS00SOJOL">Job Openings: Total Nonfarm in South Census Region</a>
 
 These data sets are extracted directly from the <a href="https://fred.stlouisfed.org/docs/api/fred/">FRED API</a> and stored in our MySQL database.</p>
-    
-### Repository Contents
+
+***
+
+### Repository Contents<br><br>
 
 <p> This repository contains the following files:
     
@@ -56,8 +60,9 @@ These data sets are extracted directly from the <a href="https://fred.stlouisfed
 * <code>static</code> Folder containing the images used in the webpages (images folder) and css styles used for the webpages (styles folder).
 * <code>templates</code> Folder containing 10 .html pages used for the web application.
 * <code>images</code> Folder containing the images used in this Readme document.</p>
+***
 
-### To Run the Application.
+### To Run the Application.<br><br>
 
 <p> The Github Repositry for this project can be accessed at: <a href="https://github.com/Sam-Tracey/Data_Representation_Project">This Link</a> From here you can click on the green Code button and clone the repo to your local machine by following the instructions.
 
@@ -84,9 +89,11 @@ After a few minutes the relevant packages will install.<br>
 <br>
 To run the application type the following into your CLI: <code>python app.py</code><br><br>
 This will initiate a Python webserver which runs locally on your machine.<br><br>
-To access the webserver open a web browser and type the following address: http://127.0.0.1:5000 <br>
+To access the webserver open a web browser and type the following address: http://127.0.0.1:5000 <br><br>
+
+***
     
-### Setting Up The First User
+### Setting Up The First User<br><br>
     
 </p>
 <p>The first screen you will be presented with is the Log In page. This page allows existing users to access the dashboard. As the user table in the datarepresentation schema is currently empty, you will need to "sign up" a new user by clicking on the link shown below:<br>
@@ -110,6 +117,8 @@ Successful Login will take you to the Home Page where you can navigate the other
 
 </p>
 
+***
+
 ### CRUD Operations
 
 <p>
@@ -120,7 +129,9 @@ As well as being able to create new users to access the web application, we can 
 <br><br>
 </p>
 
-### Interactive Dashboard.
+***
+
+### Interactive Dashboard.<br><br>
 
 <p>
 There are 4 tabs in the web application that have interactive charts and tables for the local attrition data, Southern Census Quits data, South Carolina Unemployment Rate and South Census Job Openings data.<br>
@@ -130,7 +141,9 @@ Each of the charts displayed is interactive, you can scroll over a data point to
     
 </p>
 
-### Hosting on Pythonanywhere
+***
+
+### Hosting on Pythonanywhere<br><br>
 <p>
 This web application is also hosted on Pythonanywhere (using a paid subscription since its exceeded the 500Mb free limit). You can see the hosted version by visiting: 
  <a href="http://stracey.pythonanywhere.com/">stracey.pythonanywhere.com</a> <br>
@@ -142,7 +155,11 @@ The functionality is identical to the localhost version. If you want to login wi
 </p>
 <br>
 <br>
-### Next Steps
+
+***
+
+### Next Steps<br><br>
+
 <p>
 Obviously, due to the confidential nature of our company attrition rate data, we have not connected this dashboard to an "actual" live data source. All of this data is stored in our company Data Warehouse and is directly accessible via an API for those with the correct access. I would like to incorporate this API at some point.<br>
 Secondly, our company relies on Okta to authorise access to this kind of data. Incorporating Okta authentication into this application woul ensure that only those with the required privelges could access the application.<br>
