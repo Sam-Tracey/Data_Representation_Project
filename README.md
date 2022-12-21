@@ -19,6 +19,8 @@ This project uses Flask in conjunction with a MySQL database to create a web app
 <p>This project is centered around the provision of an Analytics web application which can be used by my current employer.
 </p>
 
+***
+
 ### Overview of Zeus Industrial Products<br><br>
 
 <p> <a href="https://www.zeusinc.com/company/">Zeus Industrial Products</a> is a global leader in advanced polymer solutions, helping customers overcome complex design and engineering challenges for over 50 years. With manufacturing and sales facilities across three continents and a presence in 180 countries worldwide, Zeus develops and delivers customized polymer solutions for companies in the medical, automotive, aerospace, fiber optics, energy, and fluid management markets.
