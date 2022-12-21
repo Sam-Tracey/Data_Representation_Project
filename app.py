@@ -60,6 +60,7 @@ def signup():
         return redirect(url_for('index'))
     return render_template('signup.html')
 
+
 # I've included this route for the "forgotten password" feature but not using it in the app.
 @app.route('/forgotpass', methods=['GET', 'POST'])
 def forgotpass():
