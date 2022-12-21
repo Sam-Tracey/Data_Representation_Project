@@ -48,6 +48,7 @@ class DataDAO:
             values = (date, value)
             cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -65,6 +66,7 @@ class DataDAO:
             values = (date, value)
             cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -82,6 +84,7 @@ class DataDAO:
             values = (date, value)
             cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -99,6 +102,7 @@ class DataDAO:
             values = (date, value)
             cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -111,6 +115,7 @@ class DataDAO:
         # Convert all datetime.date returned from mysql to string
         for r in result:
             r['date'] = r['date'].strftime("%Y-%m-%d")
+        db.close()
         cursor.close()
         return result
 
@@ -124,6 +129,7 @@ class DataDAO:
         # Convert all datetime.date returned from mysql to string
         for r in result:
             r['date'] = r['date'].strftime("%Y-%m-%d")
+        db.close()
         cursor.close()
         return result
 
@@ -138,6 +144,7 @@ class DataDAO:
         for r in result:
             r['date'] = r['date'].strftime("%Y-%m-%d")
         cursor.close()
+        db.close()
         return result
 
     def readOpenings(self):
@@ -150,6 +157,7 @@ class DataDAO:
         for r in result:
             r['date'] = r['date'].strftime("%Y-%m-%d")
         cursor.close()
+        db.close()
         return result
 
     def readSCQuits(self):
@@ -161,6 +169,7 @@ class DataDAO:
         # Convert all datetime.date returned from mysql to string
         for r in result:
             r['date'] = r['date'].strftime("%Y-%m-%d")
+        db.close()
         cursor.close()
         return result
         
@@ -181,6 +190,7 @@ class DataDAO:
                 cursor.execute(sql, values)
 
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -193,6 +203,7 @@ class DataDAO:
         result = cursor.fetchone()
         # convert datetime.date returned from mysql to string
         result['date'] = result['date'].strftime("%Y-%m-%d")
+        db.close()
         cursor.close()
         return result
 
@@ -202,6 +213,7 @@ class DataDAO:
         sql="update localattritionrate set date = %s, num_quit = %s where id = %s"
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -211,6 +223,7 @@ class DataDAO:
         sql="insert into localattritionrate (date, num_quit) values (%s, %s)"
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -221,6 +234,7 @@ class DataDAO:
         values = [id]
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -233,6 +247,7 @@ class DataDAO:
         result = cursor.fetchone()
         # convert datetime.date returned from mysql to string
         result['date'] = result['date'].strftime("%Y-%m-%d")
+        db.close()
         cursor.close()
         return result
 
@@ -243,6 +258,7 @@ class DataDAO:
         values = [num_quit, date]
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -253,6 +269,7 @@ class DataDAO:
         values = [date]
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
     
@@ -267,6 +284,7 @@ class DataDAO:
         values = [username, password]
         cursor.execute(sql, values)
         result = cursor.fetchone()
+        db.close()
         cursor.close()
         return result
     
@@ -280,6 +298,7 @@ class DataDAO:
         cursor.execute(sql)
         result = cursor.fetchall()
         cursor.close()
+        db.close()
         return result
 
     def findUserByEmail(self, email):
@@ -289,6 +308,7 @@ class DataDAO:
         values = [email]
         cursor.execute(sql, values)
         result = cursor.fetchone()
+        db.close()
         cursor.close()
         return result
     
@@ -300,6 +320,7 @@ class DataDAO:
         values = [username, password, email]
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -310,6 +331,7 @@ class DataDAO:
         values = [username, password, email, id]
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 
@@ -320,6 +342,7 @@ class DataDAO:
         values = [id]
         cursor.execute(sql, values)
         db.commit()
+        db.close()
         cursor.close()
         return
 

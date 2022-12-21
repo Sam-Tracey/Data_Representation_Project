@@ -37,7 +37,6 @@ Like many large corporations primarily based in the USA, employee attrition has 
 <p> Our synthetic employee attrition data is initially stored in a .csv file before being read into our MySQL database. We also extract the following macro economic data:
 
 * <a href="https://fred.stlouisfed.org/series/SCUR">Unemployment Rate in South Carolina</a> 
-* <a href="https://fred.stlouisfed.org/series/SCMFG">All Employees: Manufacturing in South Carolina</a>
 * <a href="https://fred.stlouisfed.org/series/JTS00SOQUL">Quits: Total Nonfarm in South Census Region</a>
 * <a href="https://fred.stlouisfed.org/series/JTS00SOJOL">Job Openings: Total Nonfarm in South Census Region</a>
 
@@ -73,4 +72,81 @@ Once downloaded you will need to initialize the datarepresentation schema.This c
 Once executed you will see a new schema created containing 6 tables:<br>
 <br>
 ![Schema](images/schema.png)
+<br>
+<br>
+</p>
+<p> Now that the schema and relevant tables are set up, it is time to create a virtual environment. To do this, navigate to the folder where you cloned the original Github Repository to and open a Command Line Interface.
+After the terminal loads type: <code>python -m venv venv</code>. It will take a few minutes for the virtual environment to create.<br>
+Once created, type: <code>.\venv\Scripts\activate.bat</code> to activate the virtual environment.<br>
+<br>
+    The <code>requirements.txt</code> contains a list of all Python packages required to run the application. To install all these packages within your virtual environment type <code>pip install -r requirements.txt</code> on your command line interface.<br>
+After a few minutes the relevant packages will install.<br>
+<br>
+To run the application type the following into your CLI: <code>python app.py</code><br><br>
+This will initiate a Python webserver which runs locally on your machine.<br><br>
+To access the webserver open a web browser and type the following address: http://127.0.0.1:5000 <br>
+    
+### Setting Up The First User
+    
+</p>
+<p>The first screen you will be presented with is the Log In page. This page allows existing users to access the dashboard. As the user table in the datarepresentation schema is currently empty, you will need to "sign up" a new user by clicking on the link shown below:<br>
+<br>
+    
+![Signup](images/signup.png)<br><br>
+    
+Enter any email address, username and password then click "Sign Up". Once you click "Sign Up" the data entered will be written to the user table of the datarepresentation schema and you will be returned to the Log In page.<br>
+Enter the username and password you just signed up with and click "Login"
+<br><br>
+
+![Log In](images/login.png)
+
+<br> <br> <br>
+
+Successful Login will take you to the Home Page where you can navigate the other webpages either via the icon links or top Navigation Bar.<br><br>
+
+![Home](images/home.png)
+
+<br><br>
+
+</p>
+
+### CRUD Operations
+
+<p>
+
+As well as being able to create new users to access the web application, we can perform CRUD operations in the "EMPLOYEE DATA" tab. Here as well as Reading the initial data that will have been loaded from the .csv file, the user will be able to Update, Delete and Create new entries.Create, Update or Delete actions will automatically write to the user table in MySQL.<br><br>
+![CRUD](images/CRUD.png)
+    
+<br><br>
+</p>
+
+### Interactive Dashboard.
+
+<p>
+There are 4 tabs in the web application that have interactive charts and tables for the local attrition data, Southern Census Quits data, South Carolina Unemployment Rate and South Census Job Openings data.<br>
+Each of the charts displayed is interactive, you can scroll over a data point to see a "tool-tip" with the relevant data; you can Zoom in and Zoom out; you can download a .png image of the chart. Many of these described features can be accessed from the menu bar at the top of the chart (shown below).<br><br>
+    
+![Chart](images/chart.png)
+    
+</p>
+
+### Hosting on Pythonanywhere
+<p>
+This web application is also hosted on Pythonanywhere (using a paid subscription since its exceeded the 500Mb free limit). The functionality is identical to the localhost version. If you want to login without signing up as a new user, an exisiting user exisits with the following (very original) credentials:
+
+* Username: admin
+* Password: admin
+</p>
+<br>
+<br>
+### Next Steps
+<p>
+Obviously, due to the confidential nature of our company attrition rate data, we have not connected this dashboard to an "actual" live data source. All of this data is stored in our company Data Warehouse and is directly accessible via an API for those with the correct access. I would like to incorporate this API at some point.<br><br>
+Secondly, our company relies on Okta to authorise access to this kind of data. Incorporating Okta authentication into this application woul ensure that only those with the required privelges could access the application.<br>
+There is an extra table included in this project that we did not use (mfgemployees). All the code is present to read that data from FRED via its API but, in the interest of load times and response times for the web application when hosted on Pythonanywhere, I decided not to include it in the dashboard.<br>
+I have also added functionality in the <code>app.py</code> Flask application to enable a user who forgot her / his password to send an email with the email that is stored in the user table. Because you need to enter credentials for the Mail Server - including a username and password, I decided not to deploy this feature. The code is included (but commented out)
+
+
+    
+
     
