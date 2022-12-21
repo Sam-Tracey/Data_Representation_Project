@@ -132,7 +132,10 @@ Each of the charts displayed is interactive, you can scroll over a data point to
 
 ### Hosting on Pythonanywhere
 <p>
-This web application is also hosted on Pythonanywhere (using a paid subscription since its exceeded the 500Mb free limit). The functionality is identical to the localhost version. If you want to login without signing up as a new user, an exisiting user exisits with the following (very original) credentials:
+This web application is also hosted on Pythonanywhere (using a paid subscription since its exceeded the 500Mb free limit). You can see the hosted version by visiting: 
+ <a href="http://stracey.pythonanywhere.com/">stracey.pythonanywhere.com</a> <br>
+    
+The functionality is identical to the localhost version. If you want to login without signing up as a new user, an exisiting user exisits with the following (very original) credentials:
 
 * Username: admin
 * Password: admin
@@ -141,10 +144,33 @@ This web application is also hosted on Pythonanywhere (using a paid subscription
 <br>
 ### Next Steps
 <p>
-Obviously, due to the confidential nature of our company attrition rate data, we have not connected this dashboard to an "actual" live data source. All of this data is stored in our company Data Warehouse and is directly accessible via an API for those with the correct access. I would like to incorporate this API at some point.<br><br>
+Obviously, due to the confidential nature of our company attrition rate data, we have not connected this dashboard to an "actual" live data source. All of this data is stored in our company Data Warehouse and is directly accessible via an API for those with the correct access. I would like to incorporate this API at some point.<br>
 Secondly, our company relies on Okta to authorise access to this kind of data. Incorporating Okta authentication into this application woul ensure that only those with the required privelges could access the application.<br>
 There is an extra table included in this project that we did not use (mfgemployees). All the code is present to read that data from FRED via its API but, in the interest of load times and response times for the web application when hosted on Pythonanywhere, I decided not to include it in the dashboard.<br>
-I have also added functionality in the <code>app.py</code> Flask application to enable a user who forgot her / his password to send an email with the email that is stored in the user table. Because you need to enter credentials for the Mail Server - including a username and password, I decided not to deploy this feature. The code is included (but commented out)
+I have also added functionality in the <code>app.py</code> Flask application to enable a user who forgot her / his password to send an email with the email that is stored in the user table. Because you need to enter credentials for the Mail Server - including a username and password, I decided not to deploy this feature. The code is included (but commented out)<br><br>
+</p>
+
+***
+
+### References and Documentation.
+
+ 
+* The Federal Reserve Economic Data: https://fred.stlouisfed.org/ 
+
+* MySQL Documentation: https://www.mysql.com/products/workbench/
+
+* Python Flask Documentation: https://flask.palletsprojects.com/en/2.2.x/
+
+* Python Virtual Environments: https://docs.python.org/3/tutorial/venv.html
+
+* Python Anwhere: https://blog.pythonanywhere.com/121/
+
+* Plotly Express (Interactive charts): https://plotly.com/python/plotly-express/
+
+* Displaying Plotly Express Charts via Flask: https://towardsdatascience.com/web-visualization-with-plotly-and-flask-3660abf9c946
+
+* Display Plotly Tables via Flask: https://plotly.com/python/table/
+
 
 
     
