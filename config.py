@@ -2,6 +2,7 @@
 Author: Sam Tracey
 Module: Data Representation.
 Description: This module contains the configuration for the MySQL database connection and FRED API.
+Note: Once you set up your MySQL database, you will need to change the database connection details below.
 
 '''
 
