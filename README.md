@@ -164,8 +164,8 @@ The functionality is identical to the localhost version. If you want to login wi
 
 <p>
 Obviously, due to the confidential nature of our company attrition rate data, we have not connected this dashboard to an "actual" live data source. All of this data is stored in our company Data Warehouse and is directly accessible via an API for those with the correct access. I would like to incorporate this API at some point.<br>
-Secondly, our company relies on Okta to authorise access to this kind of data. Incorporating Okta authentication into this application woul ensure that only those with the required privelges could access the application.<br>
-There is an extra table included in this project that we did not use (mfgemployees). All the code is present to read that data from FRED via its API but, in the interest of load times and response times for the web application when hosted on Pythonanywhere, I decided not to include it in the dashboard.<br>
+Secondly, our company relies on Okta to authorise access to this kind of data. Incorporating Okta authentication into this application woul ensure that only those with the required privelges could access the application.<br><br>
+There is an extra table included in this project that we did not use (mfgemployees). All the code is present to read that data from FRED via its API but, in the interest of load times and response times for the web application when hosted on Pythonanywhere, I decided not to include it in the dashboard.<br><br>
 I have also added functionality in the <code>app.py</code> Flask application to enable a user who forgot her / his password to send an email with the email that is stored in the user table. Because you need to enter credentials for the Mail Server - including a username and password, I decided not to deploy this feature. The code is included (but commented out)<br><br>
 </p>
 
