@@ -1,3 +1,11 @@
+'''
+The dataDAO.py file provides all the functionality to read the data from the .csv file and FRED API.
+It also provides the functionality to write the data to the database, delete certain data and amend certain data.
+
+'''
+
+
+
 import mysql.connector
 from mysql.connector import cursor
 import config as cfg
