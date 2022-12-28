@@ -1,3 +1,9 @@
+/* This file is used to initialize the database. It will create the database and tables if they do not exist.
+You can copy the contenst from this SQL script, paste it into MySQL Workbench and execute it to create 
+the required tables. Please see the README file for more information. */
+
+
+
 /* Check to see if the dataRepresentation schema exists. If it does, then the database has already been initialized. */
 CREATE DATABASE  IF NOT EXISTS `datarepresentation`;
 USE `datarepresentation`;
