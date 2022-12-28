@@ -1,3 +1,12 @@
+'''
+This is the main file for the Flask app. It contains the routes for the app and the logic for the app.
+The app is a simple login app with a home page, about page, employee page and four interactive charts / tables.
+Please consult the README documentation for further information and instructions on how to run the app.
+
+'''
+
+
+
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 from flask_mail import Mail, Message
 import json
